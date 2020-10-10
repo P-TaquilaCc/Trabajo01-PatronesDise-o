@@ -206,6 +206,81 @@ private static void PintarPuntos()
 
 Tomamos cada Linea en el Rectangulo, almacenamos en una variable una instancia del adaptador y pintamos cada Punto en el adaptador.
 
+\subsection{Patrones de diseño creacionales}
+
+
+Consisten en configurar la estructura de nuestra aplicación para cumplir con los principios SOLID, así como mejorar la usabilidad y la mantenibilidad del código. Podemos aplicar los muy conocidos métodos de:
+Se ocupa de los mecanismos de creación de objetos, tratando de crear objetos de una manera adecuada a la situación.
+En otras palabras, este patrón busca, de alguna manera “despreocupar” al sistema de cómo sus objetos son creados o compuestos.
+
+
+
+\subsubsection{Singleton}
+
+
+Este patrón involucra una sola clase que es responsable de crear un objeto mientras se asegura de que solo se cree un objeto. 
+
+
+
+Si tenemos una clase Conexión, creamos un objeto, hacemos que el constructor sea privado para que no pueda ser instanciado y creamos un método para obtener la instancia únicamente por el mismo.
+\lstset{breaklines=true,style=sharpc}
+\begin{lstlisting}
+public class clsConexion
+{
+    private static clsConexion cnxMySQL;
+
+    private clsConexion() {
+    }    
+
+    public static clsConexion getInstancia() {
+        if (cnxMySQL == null) {
+            cnxMySQL = new clsConexion();
+        }
+        return cnxMySQL;
+    }
+
+    public Connection getConnection() {
+        Connection Mysql = null;
+        try {
+            MysqlConnectionPoolDataSource ds = new MysqlConnectionPoolDataSource();
+            ds.setServerName("localhost");
+            ds.setPort(3306);
+            ds.setDatabaseName("db_modelo");
+            Mysql = ds.getConnection("root", "");
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión a la BD");
+        }
+        return Mysql;
+    }
+}
+\end{lstlisting}
+
+
+Y en las demás clases podemos instanciar sin necesidad del operador “new”:
+\lstset{breaklines=true,style=sharpc}
+\begin{lstlisting}
+public class clsNegocioActividad implements clsInterfaceActividad {
+
+    clsConexion c = clsConexion.getInstancia();
+
+    @Override
+    public void AgregarActividad(clsEntidadActividad Actividad) {
+        try {
+            Connection conexion = c.getConnection();
+            CallableStatement cst = conexion.prepareCall("{call USP_Actividad_I(?,?,?,?,?,?,?)}");
+            cst.setString("psemestre_id", Actividad.getSemestre_id());
+            cst.setString("pcriterio_id", Actividad.getCriterio_id());
+            cst.setString("pnombre", Actividad.getNombre());
+            cst.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+}
+\end{lstlisting}
+
+
 %----------------------------------------------------------------------------------------
 %	Conclusiones
 %----------------------------------------------------------------------------------------
