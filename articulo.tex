@@ -118,6 +118,8 @@ Algunos investigadores observaron que existıan semejanzas entre el funcionamien
 
 
 \section{Desarrollo}
+
+
 \subsection{Patrones de diseño estructurales}
 
 Consisten en configurar la estructura de nuestra aplicación para cumplir con los principios SOLID, así como mejorar la usabilidad y la mantenibilidad del código. Podemos aplicar los muy conocidos métodos de:
@@ -206,6 +208,35 @@ private static void PintarPuntos()
 
 Tomamos cada Linea en el Rectangulo, almacenamos en una variable una instancia del adaptador y pintamos cada Punto en el adaptador.
 
+
+\subsection{Patrones de diseño de comportamiento}
+Consiste en definir un algoritmo como un esqueleto de operaciones y dejar los detalles para que sean implementados por las clases secundarias. La clase principal conserva la estructura y secuencia general del algoritmo.\\
+
+Es decir usa la herencia para la distribución del comportamiento. En el patrón del método de plantilla,  un algoritmo particular se define en el método de plantilla, pero los pasos exactos de este algoritmo se pueden definir en subclases. El método de plantilla se implementa en una clase abstracta.\\
+
+Ejemplo: Comida es una clase abstracta con un método de plantilla llamado imprimir () que define los pasos involucrados en una comida. Declaramos el método como final para que no se pueda anular.\\ 
+
+\includegraphics[width=8cm]{Imagenes/imagen}
+
+La clase Hamburguesa extiende de Comida e implementa los tres métodos abstractos de Comida.
+
+\includegraphics[width=8cm]{Imagenes/imagen2}
+
+La clase Salchipapa extiende de Comida e implementa los tres métodos abstractos de Comida.
+
+\includegraphics[width=8cm]{Imagenes/imagen3}
+
+La clase Demo crea un objeto Hamburguesa y llama al metodo imprimir, luego se crea un objeto Salchipapa y llama a imprimir.
+
+\includegraphics[width=8cm]{Imagenes/imagen4}
+
+La salida de la consola de la ejecución.
+
+\includegraphics[width=8cm]{Imagenes/imagen5}
+
+
+
+
 %----------------------------------------------------------------------------------------
 %	Conclusiones
 %----------------------------------------------------------------------------------------
@@ -241,9 +272,13 @@ Los patrones de diseño dan un
 \newblock Gamma, Erich; Helm, Richard; Johnson, Ralph; Vlissides, John(1995).Design Patterns: Elements of Reusable Object- Oriented Software. Reading,Massachusetts: Addison Wesley Longman, Inc.
 
 \bibitem[2]{}
-\newblock Nesteruk, D. (2019). Design Patterns in .NET: Reusable Approaches in C# and F# for Object-Oriented Software Design (1st ed.). Apress.
+\newblock Nesteruk, D. (2019). Design Patterns in .NET: Reusable Approaches C\# in and F\# for Object-Oriented Software Design (1st ed.). Apress.
 
+\bibitem[3]{}
+\newblock Patrones de diseño en Java: Los 23 modelos de diseño: descripción y solución ilustradas en UML 2 y Java Autor: Laurent Debrauwer
 
+\bibitem[4]{}
+\newblock Patrones de Diseño. Elementos de software orientado a objetos reutilizable. ERICH GAMMA. RICHARD HELM. RALPH JOHNSON. JOHN VLISSIDES.
 
 \end{thebibliography}
 
