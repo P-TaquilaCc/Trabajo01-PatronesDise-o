@@ -51,6 +51,11 @@
 
 \usepackage{hyperref} 
 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstdefinestyle{sharpc}{language=[Sharp]C, frame=lr, rulecolor=\color{blue!80!black}}
+
 
 %----------------------------------------------------------------------------------------
 %	TILULOS
@@ -62,7 +67,7 @@
 \pretitle{\begin{center}\Huge\bfseries} 
 \posttitle{\end{center}} 
 \title{Patrones de Diseño} 
-\author{Percy Taquila Carazas, Katerin Merino Quispe}
+\author{Percy Taquila Carazas, Katerin Merino Quispe, Abraham Lipa Calabilla}
 \date{\today} 
 \renewcommand{\maketitlehookd}{
 
@@ -108,16 +113,98 @@ Algunos investigadores observaron que existıan semejanzas entre el funcionamien
 
 
 %----------------------------------------------------------------------------------------
-%	Objetivos
+%	Desarrollo
 %----------------------------------------------------------------------------------------
 
 
 \section{Desarrollo}
-En el aprendizaje supervisado debemos aprender a entrenar a la neurona, haciendo uso de ecuaciones matemáticas, para balancear sus pesos
+\subsection{Patrones de diseño estructurales}
 
-A diferencia del aprendizaje supervisado, en el no supervisado solo se le otorgan las características, sin proporcionarle al algoritmo ninguna etiqueta. Su función es la agrupación, por lo que el algoritmo debería catalogar por similitud y poder crear grupos, sin tener la capacidad de definir cómo es cada individualidad de cada uno de los integrantes del grupo.
+Consisten en configurar la estructura de nuestra aplicación para cumplir con los principios SOLID, así como mejorar la usabilidad y la mantenibilidad del código. Podemos aplicar los muy conocidos métodos de:
 
+\begin{itemize}
+\item Herencia
+\item Composición
+\item Agregación
+\end{itemize}
 
+También debemos tener en cuenta que hay tres formas de definir estructuras de datos:
+
+\begin{itemize}
+\item Estáticamente
+\item Generado por código
+\item Dinámicamente
+\end{itemize}
+
+\subsubsection{Adaptadores}
+
+Tal como el nombre lo dice, mediante este patrón de diseño, podemos adaptar la funcionalidad de una clase a través de una interfaz.
+
+Si tenemos una clase Punto y una clase Linea:
+\lstset{breaklines=true,style=sharpc}
+\begin{lstlisting}
+public class Punto
+{
+    public int X, Y;
+}
+public class Linea
+{
+    public Punto Inicio, Fin;
+}
+\end{lstlisting}
+
+Pensamos en una Figura como una colección de Líneas:
+\lstset{breaklines=true,style=sharpc}
+\begin{lstlisting}
+public abstract class Figura : Collection<Linea> {}
+\end{lstlisting}
+
+Y creamos una clase Rectangulo a partir de la clase Figura (mediante herencia)
+\lstset{breaklines=true,style=sharpc}
+\begin{lstlisting}
+public class Rectangulo : Figura
+{
+    public Rectangulo(int x, int y, int ancho, int alto)
+    {
+        // Codigo que agrega lineas a la coleccion
+    }
+}
+\end{lstlisting}
+
+Nos toparemos con un problema. En la interfaz que tenemos para pintar en pantalla tenemos un método que solo funciona con Puntos.
+\lstset{style=sharpc}
+\begin{lstlisting}
+public static void PintarPunto(Punto p)
+{
+    // Codigo para pintar en las coordenadas X, Y de p
+}
+\end{lstlisting}
+
+Para solucionar eso, tenemos los Adaptadores. Necesitamos que el adaptador "convierta" una Línea en una colección de Puntos para que puedan ser pintados con la interfaz.
+\lstset{style=sharpc}
+\begin{lstlisting}
+public class AdaptadorLineaAPunto : Collection<Punto>
+{
+    public AdaptadorLineaAPunto(Linea linea) {
+        // Codigo para agregar los puntos en el recorrido de las Lineas
+    }
+}
+\end{lstlisting}
+
+Finalmente, implementamos la solución de la siguiente forma.
+\lstset{style=sharpc}
+\begin{lstlisting}
+private static void PintarPuntos()
+{
+    foreach (var linea in rectangulo)
+    {
+        var adaptador = new AdaptadorLineaAPunto(linea);
+        adaptador.ForEach(PintarPunto);
+    }  
+}
+\end{lstlisting}
+
+Tomamos cada Linea en el Rectangulo, almacenamos en una variable una instancia del adaptador y pintamos cada Punto en el adaptador.
 
 %----------------------------------------------------------------------------------------
 %	Conclusiones
@@ -155,6 +242,9 @@ Los patrones de diseño dan un
 
 \bibitem[1]{}
 \newblock Gamma, Erich; Helm, Richard; Johnson, Ralph; Vlissides, John(1995).Design Patterns: Elements of Reusable Object- Oriented Software. Reading,Massachusetts: Addison Wesley Longman, Inc.
+
+\bibitem[2]{}
+\newblock Nesteruk, D. (2019). Design Patterns in .NET: Reusable Approaches in C# and F# for Object-Oriented Software Design (1st ed.). Apress.
 
 
 
