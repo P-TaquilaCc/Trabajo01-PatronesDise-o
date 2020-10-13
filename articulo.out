@@ -3,5 +3,8 @@
 \BOOKMARK [2][-]{subsection.2.1}{Patrones de dise\361o estructurales}{section.2}% 3
 \BOOKMARK [3][-]{subsubsection.2.1.1}{Adaptadores}{subsection.2.1}% 4
 \BOOKMARK [2][-]{subsection.2.2}{Patrones de dise\361o de comportamiento}{section.2}% 5
-\BOOKMARK [1][-]{section.3}{Conclusiones}{}% 6
-\BOOKMARK [1][-]{section.4}{Recomendaciones}{}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Patrones de dise\361o creacionales}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Singleton}{subsection.2.3}% 7
+\BOOKMARK [3][-]{subsubsection.2.3.2}{ F\341brica }{subsection.2.3}% 8
+\BOOKMARK [1][-]{section.3}{Conclusiones}{}% 9
+\BOOKMARK [1][-]{section.4}{Recomendaciones}{}% 10

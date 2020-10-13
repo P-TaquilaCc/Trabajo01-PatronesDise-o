@@ -104,9 +104,9 @@ El patron Abstract Factory suele implementarse con metodos de fabricacion que ta
 
 \section{Introduccion}
 
-\lettrine[nindent=0em,lines=3]{L}os patrones de diseño son muy interesantes para los programadores, ya que nos ofrecen soluciones a problemas comunes y cuotidianos a la hora de diseñar una aplicación. Existen infinidad de casos en que el problema sigue el mismo patrón, solo cambia el contexto; un patrón de diseño te propone una solución a este tipo de problemas..\\
+\lettrine[nindent=0em,lines=3]{L}os patrones de diseño son muy interesantes para los programadores, ya que nos ofrecen soluciones a problemas comunes y cuotidianos a la hora de diseñar una aplicación. Existen infinidad de casos en que el problema sigue el mismo patrón, solo cambia el contexto; un patrón de diseño te propone una solución a este tipo de problemas.\\
 
-La manera de utilizarlos depende de dos factores: comprender correctamente cuando se pueden usar y tenerlos presentes a la hora de diseñar. Lo primero se consigue habiéndolos estudiado y puesto en práctica en diferentes contextos. Lo segundo, que también incluye su dificultad, es la capacidad de encontrarse con un problema, y ser capaz de relacionarlo con un patrón de diseño que conozcas.
+La manera de utilizarlos depende de dos factores: comprender correctamente cuando se pueden usar y tenerlos presentes a la hora de diseñar. Lo primero se consigue habiéndolos estudiado y puesto en práctica en diferentes contextos. Lo segundo, que también incluye su dificultad, es la capacidad de encontrarse con un problema, y ser capaz de relacionarlo con un patrón de diseño que conozcas.[1]
 
 Las características de un patrón son tres:
 
@@ -145,7 +145,7 @@ También debemos tener en cuenta que hay tres formas de definir estructuras de d
 
 \subsubsection{Adaptadores}
 
-Tal como el nombre lo dice, mediante este patrón de diseño, podemos adaptar la funcionalidad de una clase a través de una interfaz.
+Tal como el nombre lo dice, mediante este patrón de diseño, podemos adaptar la funcionalidad de una clase a través de una interfaz.[2]
 
 Si tenemos una clase Punto y una clase Linea:
 \lstset{breaklines=true,style=sharpc}
@@ -215,11 +215,16 @@ Tomamos cada Linea en el Rectangulo, almacenamos en una variable una instancia d
 
 
 \subsection{Patrones de diseño de comportamiento}
-Consiste en definir un algoritmo como un esqueleto de operaciones y dejar los detalles para que sean implementados por las clases secundarias. La clase principal conserva la estructura y secuencia general del algoritmo.\\
+Los patrones de comportamiento tienen que ver con algoritmos con la asignación de responsabilidades a objetos, describen no solo patrones de clases y objetos, sino también patrones de comunicación entre ellos. Los patrones de comportamiento basados en clases usan la herencia para distribuir el comportamiento entre clases.[3]
 
-Es decir usa la herencia para la distribución del comportamiento. En el patrón del método de plantilla,  un algoritmo particular se define en el método de plantilla, pero los pasos exactos de este algoritmo se pueden definir en subclases. El método de plantilla se implementa en una clase abstracta.\\
+\smallskip
+\textbf{2.1. Template method (Método plantilla)}
+Consiste en definir un algoritmo como un esqueleto de operaciones y dejar los detalles para que sean implementados por las clases secundarias. La clase principal conserva la estructura y secuencia general del algoritmo.[3]
 
-Ejemplo: Comida es una clase abstracta con un método de plantilla llamado imprimir () que define los pasos involucrados en una comida. Declaramos el método como final para que no se pueda anular.\\ 
+Es decir usa la herencia para la distribución del comportamiento. En el patrón del método plantilla,  un algoritmo particular se define en el método plantilla, pero los pasos exactos de este algoritmo se pueden definir en subclases. El método plantilla se implementa en una clase abstracta.
+
+\smallskip
+Ejemplo: Comida es una clase abstracta con un método de plantilla llamado imprimir () que define los pasos involucrados en una comida. Declaramos el método como final para que no se pueda anular. 
 
 \includegraphics[width=8cm]{Imagenes/imagen}
 
@@ -252,7 +257,8 @@ En otras palabras, este patrón busca, de alguna manera “despreocupar” al si
 \subsubsection{Singleton}
 
 
-Este patrón involucra una sola clase que es responsable de crear un objeto mientras se asegura de que solo se cree un objeto. 
+Este patrón involucra una sola clase que es responsable de crear un objeto mientras se asegura de que solo se cree un objeto, asegurar de que sólo posee una instancia y proporcionar un método de clase único que devuelva esta instancia.[4]
+
 
 
 
@@ -434,10 +440,10 @@ La conclusión es sencilla, si no usas patrones, deberías hacerlo. Los patrones
 \newblock Nesteruk, D. (2019). Design Patterns in .NET: Reusable Approaches C\# in and F\# for Object-Oriented Software Design (1st ed.). Apress.
 
 \bibitem[3]{}
-\newblock Patrones de diseño en Java: Los 23 modelos de diseño: descripción y solución ilustradas en UML 2 y Java Autor: Laurent Debrauwer
+\newblock Patrones de Diseño. Elementos de software orientado a objetos reutilizable. ERICH GAMMA. RICHARD HELM. RALPH JOHNSON. JOHN VLISSIDES.
 
 \bibitem[4]{}
-\newblock Patrones de Diseño. Elementos de software orientado a objetos reutilizable. ERICH GAMMA. RICHARD HELM. RALPH JOHNSON. JOHN VLISSIDES.
+\newblock Patrones de diseño en Java: Los 23 modelos de diseño: descripción y solución ilustradas en UML 2 y Java Autor: Laurent Debrauwer
 
 \end{thebibliography}
 
